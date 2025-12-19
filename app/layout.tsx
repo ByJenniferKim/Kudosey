@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title: "Kudosey - VRChat Creator Hub",
   description: "Connect creators with talents",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/icon.ico",
   }
 };
 
