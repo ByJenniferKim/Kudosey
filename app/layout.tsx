@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   description: "Connect creators with talents",
   icons: {
     icon: "/favicon.ico",
-    shortcut:"/icon.png",
   }
 };
 
