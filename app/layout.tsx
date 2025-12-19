@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kudose - VRChat Creator Hub",
+  title: "Kudosey - VRChat Creator Hub",
   description: "Connect creators with talents",
 };
 

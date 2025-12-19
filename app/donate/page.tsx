@@ -7,7 +7,7 @@ export default function DonatePage() {
     {
       title: "Supporter",
       amount: "$5",
-      description: "Help keep Kudose running and accessible to everyone",
+      description: "Help keep Kudosey running and accessible to everyone",
       perks: ["Platform supporter badge", "Our sincere thanks"],
       popular: false,
       paymentLink: "PAYMENT LINK"
@@ -40,7 +40,7 @@ export default function DonatePage() {
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold text-black dark:text-white md:text-5xl">
               Support <span className="bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-                Kudose</span>
+                Kudosey</span>
             </h1>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
               Help us build and maintain this platform for the VRChat community
@@ -182,7 +182,7 @@ export default function DonatePage() {
                   Is my donation tax-deductible?
                 </h3>
                 <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                  Currently, Kudose is not a registered non-profit, so donations are not tax-deductible.
+                  Currently, Kudosey is not a registered non-profit, so donations are not tax-deductible.
                 </p>
               </div>
               <div className="rounded-xl border border-zinc-200 p-6 dark:border-zinc-800">

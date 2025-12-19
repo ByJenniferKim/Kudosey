@@ -93,7 +93,7 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
         {/* Header */}
         <div className="mb-8 text-center">
           <h2 className="text-2xl font-bold text-black dark:text-white">
-            {isLogin ? 'Welcome Back' : 'Join Kudose'}
+            {isLogin ? 'Welcome Back' : 'Join Kudosey'}
           </h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
             {isLogin ? 'Sign in to your account' : 'Create your account to get started'}

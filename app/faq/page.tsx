@@ -5,12 +5,12 @@ import Footer from "../components/Footer";
 export default function FAQPage() {
   const faqs = [
     {
-      question: "How does Kudose work?",
-      answer: "Kudose connects VRChat avatar creators with service providers. Creators can browse listings, compare services, and hire photographers, content creators, or showcasers directly through the platform."
+      question: "How does y work?",
+      answer: "Kudosey connects VRChat avatar creators with service providers. Creators can browse listings, compare services, and hire photographers, content creators, or showcasers directly through the platform."
     },
     {
-      question: "Is Kudose free to use?",
-      answer: "Yes, browsing and creating a profile is completely free. Service providers may charge for their services, and Kudose takes a small platform fee from completed transactions."
+      question: "Is Kudosey free to use?",
+      answer: "Yes, browsing and creating a profile is completely free. Service providers may charge for their services, and Kudosey takes a small platform fee from completed transactions."
     },
     {
       question: "How do I become a service provider?",
@@ -42,7 +42,7 @@ export default function FAQPage() {
               Frequently Asked Questions
             </h1>
             <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-400">
-              Everything you need to know about Kudose
+              Everything you need to know about Kudosey
             </p>
           </div>
 

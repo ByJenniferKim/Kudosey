@@ -77,7 +77,7 @@ export default function Navbar() {
                     <Link href="/" className="flex items-center gap-2">
                     <Image
                     src="/VRLogo1.png"
-                    alt="Kudose Logo"
+                    alt="Kudosey Logo"
                     width={100}
                     height={100}
                     className="h-20 w-40 object-contain"

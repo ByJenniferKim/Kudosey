@@ -10,7 +10,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="mb-4">
               <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">
-                Kudose
+                Kudosey
               </span>
             </div>
             <p className="max-w-md text-zinc-600 dark:text-zinc-400">
@@ -110,7 +110,7 @@ export default function Footer() {
 
           {/* Copyright */}
           <div className="text-center text-zinc-600 dark:text-zinc-400 md:text-right">
-            <p>© {new Date().getFullYear()} Kudose. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Kudosey. All rights reserved.</p>
             <p className="mt-1 text-sm">Made for the VRChat community</p>
           </div>
         </div>

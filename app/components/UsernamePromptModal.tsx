@@ -52,7 +52,7 @@ export default function UsernamePromptModal({ isOpen, onClose, userId }: Props) 
   }, [isOpen, userId]);
 
   if (!isOpen) return null;
-  
+
   const save = async () => {
     setErrorMsg(null);
 
@@ -108,7 +108,7 @@ export default function UsernamePromptModal({ isOpen, onClose, userId }: Props) 
 
         <div className="mb-6 text-center">
           <h2 className="text-2xl font-bold text-black dark:text-white">
-            Create your Kudose username
+            Create your Kudosey username
           </h2>
           <p className="mt-2 text-zinc-600 dark:text-zinc-400">
             This is how you’ll appear to others.
