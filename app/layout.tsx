@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Kudosey - VRChat Creator Hub",
   description: "Connect creators with talents",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut:"/icon.png",
+  }
 };
 
 export default function RootLayout({
