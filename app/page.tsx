@@ -46,13 +46,6 @@ export default function Home() {
             className="rounded-full border-2 border-purple-500 px-8 py-3 text-lg font-semibold text-purple-600 transition-all hover:bg-purple-50 dark:text-purple-400 dark:hover:bg-purple-900/30 text-center">
             Gallery
             </Link>
-
-            <Link
-            href="/create-service"
-            className="rounded-full bg-white border-2 border-purple-500 px-8 py-3 text-lg font-semibold text-purple-600 transition-all hover:bg-purple-50 dark:bg-zinc-900 dark:text-purple-400 dark:hover:bg-purple-900/30 text-center"
-            >
-              List Your Service
-            </Link>
           </div>
         </div>
 

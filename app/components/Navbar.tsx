@@ -12,6 +12,8 @@ export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
     const [session, setSession] = useState<Session | null>(null);
+    const [role, setRole] = useState<'buyer' | 'seller' | null>(null);
+    const isSeller = role === 'seller';
     const [isUsernameModalOpen, setIsUsernameModalOpen] = useState(false);
     
     useEffect(() => {
@@ -43,11 +45,12 @@ export default function Navbar() {
         const checkProfile = async () => {
             const { data, error } = await supabase
             .from('profiles')
-            .select('username_confirmed')
+            .select('username_confirmed, role')
             .eq('id', user.id)
             .single();
 
             if (cancelled || error) return;
+            setRole((data?.role as any) ?? 'buyer');
 
             if (data?.username_confirmed === false) {
                 setIsUsernameModalOpen(true);
@@ -63,6 +66,7 @@ export default function Navbar() {
 
     const handleLogout = async () => {
         await supabase.auth.signOut();
+        setRole(null);
         setIsMenuOpen(false);
         setIsLoginModalOpen(false);
         setIsUsernameModalOpen(false);
@@ -91,6 +95,13 @@ export default function Navbar() {
                             className="text-zinc-700 transition-colors hover:text-purple-600 dark:text-zinc-300 dark:hover:text-purple-400">
                                 Browse
                             </Link>
+                            {session && isSeller && (
+                                <Link
+                                href="/create-service"
+                                className="text-zinc-700 transition-colors hover:text-purple-600 dark:text-zinc-300 dark:hover:text-purple-400">
+                                    List your service
+                                </Link>
+                            )}
                             <Link
                             href="/faq"
                             className="text-zinc-700 transition-colors hover:text-purple-600 dark:text-zinc-300 dark:hover:text-purple-400">
@@ -113,10 +124,10 @@ export default function Navbar() {
                             {session ? (
                                 <div className="hidden items-center gap-3 md:flex">
                                     <Link
-                                    href="/account"
+                                    href="/me"
                                     className="rounded-full border border-zinc-300 bg-white px-5 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
                                     >
-                                        Account
+                                        Profile
                                     </Link>
 
                                     <button
@@ -156,6 +167,14 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}>
                     Browse
                     </Link>
+                    {session && isSeller && (
+                        <Link
+                        href="/create-service"
+                        className="py-2 text-zinc-700 dark:text-zinc-300"
+                        onClick={() => setIsMenuOpen(false)} >
+                            List your service
+                        </Link>
+                    )}
                     <Link href="/faq" className="py-2 text-zinc-700 dark:text-zinc-300"
                     onClick={() => setIsMenuOpen(false)}>
                     FAQ
