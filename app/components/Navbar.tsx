@@ -15,19 +15,23 @@ export default function Navbar() {
     const [role, setRole] = useState<'buyer' | 'seller' | null>(null);
     const isSeller = role === 'seller';
     const [isUsernameModalOpen, setIsUsernameModalOpen] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
         let mounted = true;
+        setIsLoading(true);
 
         // Get current session on load
         supabase.auth.getSession().then(({ data }) => {
             if (!mounted) return;
             setSession(data.session ?? null);
+            setIsLoading(false);
         });
 
         // Listen for login/out changes
         const { data: sub } = supabase.auth.onAuthStateChange((_event, newSession) => {
             setSession(newSession);
+            setIsLoading(false);
         });
 
         return () => {
@@ -38,7 +42,13 @@ export default function Navbar() {
 
     useEffect(() => {
         const user = session?.user;
-        if (!user) return;
+        if (!user) {
+            setRole(null);
+            if (isUsernameModalOpen) {
+                setIsUsernameModalOpen(false);
+            }
+            return;
+        }
 
         let cancelled = false;
 
@@ -63,6 +73,10 @@ export default function Navbar() {
             cancelled = true;
         };
     }, [session]);
+
+        if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     const handleLogout = async () => {
         await supabase.auth.signOut();

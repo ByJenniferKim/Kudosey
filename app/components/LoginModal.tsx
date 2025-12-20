@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { X } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
+import ConfirmationPopup from './ConfirmationPopup';
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -14,7 +15,8 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-
+  const [showConfirmation, setShowConfirmation] = useState(false);
+  const [confirmationEmail, setConfirmationEmail] = useState('');
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -71,12 +73,24 @@ export default function LoginModal({ isOpen, onClose }: LoginModalProps) {
 
         if (error) throw error;
 
+        setConfirmationEmail(email);
+        setShowConfirmation(true);
+
+        // Clear form and close modal
+        setEmail('');
+        setPassword('');
+        setUsername('');
         onClose();
+
     } catch (err: any) {
         setErrorMsg(err?.message ?? 'Something went wrong. Please try again.');
     } finally {
         setLoading(false);
     }
+  };
+
+  const handleCloseConfirmation = () => {
+    setShowConfirmation(false);
   };
 
   return (
