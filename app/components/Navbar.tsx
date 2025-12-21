@@ -14,6 +14,7 @@ export default function Navbar() {
     const [session, setSession] = useState<Session | null>(null);
     const [role, setRole] = useState<'buyer' | 'seller' | null>(null);
     const isSeller = role === 'seller';
+    const [isAdmin, setIsAdmin] = useState(false);
     const [isUsernameModalOpen, setIsUsernameModalOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     
@@ -44,6 +45,7 @@ export default function Navbar() {
         const user = session?.user;
         if (!user) {
             setRole(null);
+            setIsAdmin(false);
             if (isUsernameModalOpen) {
                 setIsUsernameModalOpen(false);
             }
@@ -55,12 +57,13 @@ export default function Navbar() {
         const checkProfile = async () => {
             const { data, error } = await supabase
             .from('profiles')
-            .select('username_confirmed, role')
+            .select('username_confirmed, role, is_admin')
             .eq('id', user.id)
             .single();
 
             if (cancelled || error) return;
             setRole((data?.role as any) ?? 'buyer');
+            setIsAdmin(data?.is_admin ?? false);
 
             if (data?.username_confirmed === false) {
                 setIsUsernameModalOpen(true);
@@ -131,6 +134,13 @@ export default function Navbar() {
                             className="text-zinc-700 transition-colors hover:text-purple-600 dark:text-zinc-300 dark:hover:text-purple-400">
                                 Donate
                             </Link>
+                            {session && isAdmin && (
+                                <Link
+                                href="/admin"
+                                className="text-zinc-700 transition-colors hover:text-purple-600 dark:text-zinc-300 dark:hover:text-purple-400" >
+                                    Admin
+                                </Link>
+                            )}
                         </div>
 
                         {/* Right side buttons */}
@@ -201,6 +211,15 @@ export default function Navbar() {
                     onClick={() => setIsMenuOpen(false)}>
                     Donate
                     </Link>
+                    {session && isAdmin && (
+                        <Link
+                        href="/admin"
+                        className="py-2 text-zinc-700 dark:text-zinc-300"
+                        onClick={() => setIsMenuOpen(false)} >
+                            Admin
+                        </Link>
+                    )}
+                    
                     {session ? (
                         <>
                         <Link
